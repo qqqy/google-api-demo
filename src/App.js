@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Map, GoogleApiWrapper } from 'google-maps-react';
+import dotenv from 'dotenv';
+dotenv.config()
 
-function App() {
-  return (
-    <>We in it now boi</>
-  );
+const mapStyles = {
+  width: '100%',
+  height: '100%'
+};
+
+export class MapContainer extends Component {
+  render() {
+    return (
+      <Map
+        google={this.props.google}
+        zoom={14}
+        style={mapStyles}
+        initialCenter={{
+         lat: -1.2884,
+         lng: 36.8233
+        }}
+      />
+    );
+  }
 }
 
-export default App;
+export default GoogleApiWrapper({
+  apiKey: process.env.REACT_APP_GOOGLE_API_KEY
+})(MapContainer);
