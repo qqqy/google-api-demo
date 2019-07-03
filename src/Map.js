@@ -15,9 +15,10 @@ export class CurrentLocation extends React.Component {
 
     const {lat , lng } = this.props.initialCenter;
     this.state = {
+      currentLocation: {
       lat: lat,
       lng: lng
-    }
+    }}
   }
 
   componentDidMount(){
